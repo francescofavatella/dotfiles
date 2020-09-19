@@ -1,0 +1,19 @@
+[alias]
+  # https://dev.to/zeanqin/common-git-commands-and-configurations-used-in-a-day-to-day-workflow-8e2
+  # add a `add-commit` alias, or
+  add-commit = "!f() { git add -A && git commit; }; f"
+
+  # add a `ac` alias to save a few more keystrokes
+  ac = "!f() { git add -A && git commit; }; f"
+    
+  # delete local branches whose remote tracking branches have been merged back to development
+  delete-merged = "!f() { git branch --merged | egrep -v "(^\\*|master|development|skip_branch_name)" | xargs git branch -d; }; f"
+
+  # Prettify the Git log
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+
+[core]
+  editor = vim
+
+[include]
+  # path = ~/.gitconfig_local
