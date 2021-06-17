@@ -10,13 +10,15 @@
   delete-merged = "!f() { git branch --merged | egrep -v "(^\\*|master|development|skip_branch_name)" | xargs git branch -d; }; f"
 
   # Prettify the Git log
-  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-  
+  lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+
   # only local branches git branch -vv | cut -c 3- | awk '$3 !~/\[origin/ { print $1 }'
 
   # git branches ordered by most recent commit
   # https://dev.to/xjamundx/my-first-git-alias-4ldh
   branches = branch --sort=-committerdate --format='%(HEAD)%(color:yellow)%(refname:short) | %(color:bold green)%(committerdate:relative) | %(color:blue)%(subject)%(color:reset)' --color=always
+
+  s = status -s  
 
 [core]
   editor = vim
